@@ -659,13 +659,3 @@ spline-viewer.spline-hero canvas {
   height: 130%;
   z-index: -1;
 }
-
-
-.robot-inter {
-  position: absolute;
-  width: 80%;
-  height: 100%;
-  size-adjust: 50%;
-  left: 45%;
-  top: 500%;
-}
