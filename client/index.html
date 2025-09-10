@@ -58,6 +58,15 @@
                             <span class="sr-only">Pricing</span>
                         </a>
                         <a href="#contact" class="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 is-primary" data-testid="nav-contact">Contact</a>
+                        
+                        <!-- Language Selector -->
+                        <div class="relative ml-4">
+                            <select id="language-selector" class="bg-transparent border border-border rounded-md px-3 py-1 text-sm font-medium text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none cursor-pointer">
+                                <option value="en">🇺🇸 EN</option>
+                                <option value="fr">🇫🇷 FR</option>
+                            </select>
+                            <i class="fas fa-chevron-down absolute right-2 top-1/2 transform -translate-y-1/2 text-xs text-muted-foreground pointer-events-none"></i>
+                        </div>
                     </div>
                 </div>
                 <!-- Mobile menu button -->
@@ -75,6 +84,14 @@
                     <a href="#services" class="block text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 text-sm font-medium" data-testid="nav-mobile-services">Services</a>
                     <a href="#pricing" class="block text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 text-sm font-medium" data-testid="nav-mobile-pricing">Pricing</a>
                     <a href="#contact" class="block bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 mt-2" data-testid="nav-mobile-contact">Contact</a>
+                    
+                    <!-- Mobile Language Selector -->
+                    <div class="mt-4 px-3">
+                        <select id="language-selector-mobile" class="w-full bg-card border border-border rounded-md px-3 py-2 text-sm font-medium text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <option value="en">🇺🇸 English</option>
+                            <option value="fr">🇫🇷 Français</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
