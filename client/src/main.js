@@ -242,6 +242,40 @@
         });
     }
 
+    // Language management functionality
+    function initLanguageManager() {
+        import('./translations.js').then(module => {
+            const { LanguageManager } = module;
+            window.languageManager = new LanguageManager();
+            
+            // Initialize language system
+            window.languageManager.init();
+            
+            // Setup event listeners for language selectors
+            const desktopSelector = document.getElementById('language-selector');
+            const mobileSelector = document.getElementById('language-selector-mobile');
+            
+            function handleLanguageChange(e) {
+                const selectedLanguage = e.target.value;
+                window.languageManager.setLanguage(selectedLanguage);
+                
+                // Sync both selectors
+                if (desktopSelector) desktopSelector.value = selectedLanguage;
+                if (mobileSelector) mobileSelector.value = selectedLanguage;
+            }
+            
+            if (desktopSelector) {
+                desktopSelector.addEventListener('change', handleLanguageChange);
+            }
+            
+            if (mobileSelector) {
+                mobileSelector.addEventListener('change', handleLanguageChange);
+            }
+        }).catch(error => {
+            console.error('Failed to load language manager:', error);
+        });
+    }
+
     // Initialize everything when DOM is loaded
     function init() {
         initSmoothScrolling();
@@ -251,6 +285,7 @@
         initContactForm();
         initPricingButtons();
         initAnimations();
+        initLanguageManager();
         
         console.log('Tettrix website initialized successfully');
     }
