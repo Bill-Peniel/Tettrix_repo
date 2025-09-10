@@ -1,0 +1,74 @@
+<!-- Contact Section Component -->
+<section id="contact" class="py-20 bg-muted">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4" data-testid="contact-title">{{contact.title}}</h2>
+            <p class="text-xl text-muted-foreground max-w-3xl mx-auto" data-testid="contact-subtitle">
+                {{contact.subtitle}}
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <!-- Contact Information -->
+            <div class="space-y-8">
+                <h3 class="text-2xl font-bold text-foreground mb-6">{{contact.info.title}}</h3>
+                
+                {{#each contact.info.items}}
+                <div class="flex items-start space-x-4" data-testid="contact-{{id}}">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <i class="{{icon}} text-primary"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-foreground mb-2">{{title}}</h4>
+                        <p class="text-muted-foreground">{{{content}}}</p>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="bg-card rounded-2xl shadow-lg p-8 border border-border">
+                <h3 class="text-2xl font-bold text-foreground mb-6">{{contact.form.title}}</h3>
+                
+                <form id="contact-form" class="space-y-6" data-testid="contact-form">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        {{#each contact.form.fields}}
+                        {{#if isHalf}}
+                        <div>
+                            <label for="{{id}}" class="block text-sm font-medium text-foreground mb-2">{{label}} {{#if required}}*{{/if}}</label>
+                            <input type="{{type}}" id="{{id}}" name="{{id}}" {{#if required}}required{{/if}} class="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent transition-colors duration-200" placeholder="{{placeholder}}" data-testid="input-{{id}}">
+                        </div>
+                        {{/if}}
+                        {{/each}}
+                    </div>
+                    
+                    {{#each contact.form.fields}}
+                    {{#unless isHalf}}
+                    <div>
+                        <label for="{{id}}" class="block text-sm font-medium text-foreground mb-2">{{label}} {{#if required}}*{{/if}}</label>
+                        {{#if isSelect}}
+                        <select id="{{id}}" name="{{id}}" class="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent transition-colors duration-200" data-testid="select-{{id}}">
+                            <option value="">{{placeholder}}</option>
+                            {{#each options}}
+                            <option value="{{value}}">{{text}}</option>
+                            {{/each}}
+                        </select>
+                        {{else if isTextarea}}
+                        <textarea id="{{id}}" name="{{id}}" {{#if required}}required{{/if}} rows="{{rows}}" class="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent transition-colors duration-200 resize-vertical" placeholder="{{placeholder}}" data-testid="textarea-{{id}}"></textarea>
+                        {{else}}
+                        <input type="{{type}}" id="{{id}}" name="{{id}}" {{#if required}}required{{/if}} class="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent transition-colors duration-200" placeholder="{{placeholder}}" data-testid="input-{{id}}">
+                        {{/if}}
+                    </div>
+                    {{/unless}}
+                    {{/each}}
+                    
+                    <button type="submit" class="w-full bg-primary text-primary-foreground py-4 rounded-lg font-semibold hover:bg-primary/90 transition-colors duration-200 flex items-center justify-center" data-testid="button-send-message">
+                        <i class="fas fa-paper-plane mr-2"></i>
+                        {{contact.form.submitText}}
+                    </button>
+                </form>
+                <div id="form-status" class="mt-4 hidden" data-testid="form-status"></div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,40 @@
+<!-- Hero Section Component -->
+<section id="home" class="gradient-hero pt-20 pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="text-center lg:text-left">
+                <h1 class="text-4xl md:text-6xl font-bold text-primary-foreground mb-6 leading-tight" data-testid="hero-title">
+                    {{hero.title}}
+                </h1>
+                <p class="text-xl text-primary-foreground/90 mb-8 leading-relaxed" data-testid="hero-description">
+                    {{hero.description}}
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    {{#each hero.buttons}}
+                    <a href="{{href}}" class="{{classes}} inline-flex items-center justify-center" data-testid="button-{{id}}">
+                        <i class="{{icon}} mr-2"></i>
+                        {{text}}
+                    </a>
+                    {{/each}}
+                </div>
+            </div>
+            <div class="relative">
+                <div class="bg-card/20 backdrop-blur-sm rounded-2xl p-8 border border-primary-foreground/20">
+                    <div class="space-y-4">
+                        {{#each hero.features}}
+                        <div class="flex items-center space-x-4">
+                            <div class="w-16 h-16 bg-accent/20 rounded-lg flex items-center justify-center">
+                                <i class="{{icon}} text-2xl text-primary-foreground"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-primary-foreground">{{title}}</h3>
+                                <p class="text-primary-foreground/80">{{subtitle}}</p>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

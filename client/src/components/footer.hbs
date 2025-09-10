@@ -1,0 +1,50 @@
+<!-- Footer Component -->
+<footer class="bg-secondary text-secondary-foreground py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+            <div>
+                <h3 class="text-2xl font-bold mb-4">{{footer.company.name}}</h3>
+                <p class="text-secondary-foreground/80 mb-4">{{footer.company.description}}</p>
+                <div class="flex space-x-4">
+                    {{#each footer.company.socialLinks}}
+                    <a href="{{url}}" class="text-secondary-foreground/60 hover:text-secondary-foreground transition-colors duration-200" data-testid="link-footer-{{platform}}">
+                        <i class="{{icon}}"></i>
+                    </a>
+                    {{/each}}
+                </div>
+            </div>
+            
+            {{#each footer.sections}}
+            <div>
+                <h4 class="font-semibold mb-4">{{title}}</h4>
+                <ul class="space-y-2">
+                    {{#each links}}
+                    <li><a href="{{href}}" class="text-secondary-foreground/80 hover:text-secondary-foreground transition-colors duration-200">{{text}}</a></li>
+                    {{/each}}
+                </ul>
+            </div>
+            {{/each}}
+            
+            <div>
+                <h4 class="font-semibold mb-4">{{footer.contactInfo.title}}</h4>
+                <div class="space-y-3 text-secondary-foreground/80">
+                    {{#each footer.contactInfo.items}}
+                    <div class="flex items-{{#if multiline}}start{{else}}center{{/if}}">
+                        <i class="{{icon}} mr-2{{#if multiline}} mt-1{{/if}}"></i>
+                        <span>{{{content}}}</span>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        
+        <div class="border-t border-secondary-foreground/20 pt-8 text-center">
+            <p class="text-secondary-foreground/60">
+                {{footer.copyright}} | 
+                {{#each footer.legalLinks}}
+                <a href="{{href}}" class="hover:text-secondary-foreground transition-colors duration-200">{{text}}</a>{{#unless @last}} | {{/unless}}
+                {{/each}}
+            </p>
+        </div>
+    </div>
+</footer>

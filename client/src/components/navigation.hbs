@@ -1,0 +1,41 @@
+<!-- Navigation Header Component -->
+<nav class="fixed top-0 left-0 right-0 bg-card/90 backdrop-blur-md shadow-sm z-50 border-b border-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <div class="flex-shrink-0">
+                <h1 class="text-2xl font-bold text-primary">{{companyName}}</h1>
+            </div>
+            <div class="hidden md:block">
+                <div class="ml-10 flex items-baseline space-x-8">
+                    {{#each navItems}}
+                    {{#if isPrimary}}
+                    <a href="{{href}}" class="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 is-primary" data-testid="nav-{{id}}">{{title}}</a>
+                    {{else}}
+                    <a href="{{href}}" class="relative flip-3d text-foreground transition-colors duration-200 px-3 py-2 text-sm font-medium" data-testid="nav-{{id}}">
+                        <span class="flip-inner" aria-hidden="true">
+                            <span class="flip-face flip-front">{{title}}</span>
+                            <span class="flip-face flip-back">{{title}}</span>
+                        </span>
+                        <span class="flip-label sr-only">{{title}}</span>
+                    </a>
+                    {{/if}}
+                    {{/each}}
+                </div>
+            </div>
+            <!-- Mobile menu button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-btn" class="text-foreground hover:text-primary" data-testid="button-mobile-menu">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden pb-4">
+            <div class="space-y-2">
+                {{#each navItems}}
+                <a href="{{href}}" class="{{#if isPrimary}}block bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 mt-2{{else}}block text-foreground hover:text-primary transition-colors duration-200 px-3 py-2 text-sm font-medium{{/if}}" data-testid="nav-mobile-{{id}}">{{title}}</a>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</nav>
