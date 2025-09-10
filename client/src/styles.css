@@ -7,6 +7,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -18,18 +19,32 @@
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-@keyframes pulse-glow {
+@keyframes slide-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes float-gentle {
   0%, 100% {
-    box-shadow: 0 0 0 0 hsl(var(--primary) / 0.4);
+    transform: translateY(0);
   }
   50% {
-    box-shadow: 0 0 0 10px hsl(var(--primary) / 0);
+    transform: translateY(-6px);
   }
 }
 
@@ -42,24 +57,63 @@
   animation: slide-down 0.3s ease-out forwards;
 }
 
-.animate-pulse-glow {
-  animation: pulse-glow 2s infinite;
+.animate-slide-in-up {
+  animation: slide-in-up 0.8s ease-out forwards;
+}
+
+.animate-float-gentle {
+  animation: float-gentle 4s ease-in-out infinite;
 }
 
 /* Enhanced service card interactions */
 .service-card {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateY(0);
+  position: relative;
+  opacity: 0;
+  transform: translateY(50px) scale(0.9);
+  filter: blur(8px);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  backdrop-filter: blur(0px);
 }
 
-.service-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px hsl(var(--primary) / 0.1), 0 10px 20px hsl(var(--primary) / 0.06);
+.service-card.animate-slide-in-up {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0px);
+}
+
+.service-card.animate-slide-in-up:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 25px 50px hsl(var(--primary) / 0.15), 
+              0 15px 30px hsl(var(--primary) / 0.1),
+              0 0 0 1px hsl(var(--primary) / 0.05);
+  backdrop-filter: blur(8px);
+  filter: blur(0px);
+}
+
+.service-card .service-icon {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .service-card:hover .service-icon {
-  transform: scale(1.1);
-  transition: transform 0.3s ease;
+  transform: scale(1.15) rotate(5deg);
+  filter: brightness(1.1);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, hsl(var(--primary) / 0.05), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.service-card.animate-slide-in-up:hover::before {
+  opacity: 1;
 }
 
 /* Enhanced team card interactions */
@@ -137,14 +191,14 @@
 }
 
 .nav-on-hero .bg-primary {
-  background-color: rgba(255,255,255,0.15) !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
   color: #ffffff !important;
 }
 
 .nav-on-hero .border,
 .nav-on-hero .border-border,
 .nav-on-hero .border-primary-foreground {
-  border-color: rgba(255,255,255,0.5) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
 }
 
 .nav-on-hero .hover\:text-primary:hover,
@@ -175,7 +229,8 @@
   display: inline-block;
   padding: 0.25rem 0.5rem;
   backface-visibility: hidden;
-  border-radius: 0.375rem; /* rounded-md */
+  border-radius: 0.375rem;
+  /* rounded-md */
 }
 
 .flip-3d .flip-front {
@@ -221,7 +276,8 @@
 }
 
 /* Ensure pointer events are enabled for Spline */
-.spline-hero, spline-viewer.spline-hero canvas {
+.spline-hero,
+spline-viewer.spline-hero canvas {
   pointer-events: auto;
 }
 
@@ -248,9 +304,9 @@
 
 /* Ensure section does not clip the canvas */
 #cta-robot,
-#cta-robot > div,
+#cta-robot>div,
 #cta-robot .grid,
-#cta-robot .grid > div {
+#cta-robot .grid>div {
   overflow: visible;
 }
 
@@ -381,8 +437,13 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Section dividers */
@@ -409,16 +470,16 @@
     font-size: 2.5rem;
     line-height: 1.2;
   }
-  
+
   .section-title {
     font-size: 2rem;
   }
-  
+
   .service-card,
   .team-card {
     transform: none;
   }
-  
+
   .service-card:hover,
   .team-card:hover {
     transform: translateY(-4px);
@@ -427,6 +488,7 @@
 
 /* Accessibility enhancements */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -445,12 +507,13 @@
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
+
   .service-card,
   .team-card,
   .pricing-card {
     border: 2px solid hsl(var(--foreground));
   }
-  
+
   .btn-primary,
   .btn-secondary {
     border: 2px solid currentColor;
@@ -463,14 +526,14 @@
     background: white !important;
     color: black !important;
   }
-  
+
   .service-card,
   .team-card,
   .pricing-card {
     border: 1px solid #ccc !important;
     box-shadow: none !important;
   }
-  
+
   nav,
   footer {
     display: none !important;
@@ -489,10 +552,21 @@
   transform: translateY(0);
 }
 
-.stagger-1 { transition-delay: 0.1s; }
-.stagger-2 { transition-delay: 0.2s; }
-.stagger-3 { transition-delay: 0.3s; }
-.stagger-4 { transition-delay: 0.4s; }
+.stagger-1 {
+  transition-delay: 0.1s;
+}
+
+.stagger-2 {
+  transition-delay: 0.2s;
+}
+
+.stagger-3 {
+  transition-delay: 0.3s;
+}
+
+.stagger-4 {
+  transition-delay: 0.4s;
+}
 
 /* Custom property fallbacks for older browsers */
 @supports not (color: hsl(var(--primary))) {
@@ -502,11 +576,22 @@
     --background-fallback: #ffffff;
     --foreground-fallback: #1f2937;
   }
-  
-  .bg-primary { background-color: var(--primary-fallback) !important; }
-  .text-primary { color: var(--primary-fallback) !important; }
-  .bg-accent { background-color: var(--accent-fallback) !important; }
-  .text-accent { color: var(--accent-fallback) !important; }
+
+  .bg-primary {
+    background-color: var(--primary-fallback) !important;
+  }
+
+  .text-primary {
+    color: var(--primary-fallback) !important;
+  }
+
+  .bg-accent {
+    background-color: var(--accent-fallback) !important;
+  }
+
+  .text-accent {
+    color: var(--accent-fallback) !important;
+  }
 }
 
 .myback {
@@ -514,7 +599,7 @@
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
+  height: 130%;
   z-index: -1;
 }
 

@@ -217,14 +217,21 @@
     // Add intersection observer for animations
     function initAnimations() {
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.15,
+            rootMargin: '0px 0px -30px 0px'
         };
         
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+            entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-fade-in');
+                    // Add staggered animation delay for service cards
+                    if (entry.target.classList.contains('service-card')) {
+                        setTimeout(() => {
+                            entry.target.classList.add('animate-slide-in-up');
+                        }, index * 150); // 150ms delay between each card
+                    } else {
+                        entry.target.classList.add('animate-fade-in');
+                    }
                 }
             });
         }, observerOptions);
