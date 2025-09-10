@@ -63,29 +63,21 @@ const siteData = {
     ]
   },
   about: {
-    title: 'À Propos de Tettrix',
-    subtitle: 'Votre partenaire technologique de confiance pour transformer et faire évoluer votre entreprise dans l\'ère numérique.',
+    title: 'About Tettrix',
+    subtitle: 'Transforming businesses through innovative technology solutions and unparalleled expertise.',
     image: {
       src: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600',
-      alt: 'Espace de travail moderne avec ordinateurs et technologies'
+      alt: 'Modern office workspace with computers and technology'
     },
-    heading: 'L\'Excellence Technologique au Service de Votre Réussite',
+    heading: 'Pioneering IT Excellence Since 2015',
     paragraphs: [
-      'Depuis 2015, Tettrix s\'impose comme un leader dans l\'accompagnement technologique des entreprises. Notre mission est de transformer les défis numériques en opportunités de croissance, en proposant des solutions IT innovantes et sur mesure.',
-      'Notre équipe d\'experts certifiés maîtrise les dernières technologies et méthodologies pour garantir la sécurité, la performance et l\'évolutivité de vos systèmes informatiques. Chaque projet est une collaboration étroite avec nos clients pour comprendre leurs enjeux spécifiques.',
-      'Nous croyons fermement qu\'une technologie bien pensée et bien mise en œuvre devient un véritable accélérateur de business. C\'est pourquoi nous plaçons l\'innovation, la qualité et la satisfaction client au cœur de notre approche.'
-    ],
-    values: [
-      { icon: 'fas fa-lightbulb', title: 'Innovation', description: 'Solutions créatives et technologies de pointe' },
-      { icon: 'fas fa-handshake', title: 'Partenariat', description: 'Collaboration étroite et relation de confiance' },
-      { icon: 'fas fa-award', title: 'Excellence', description: 'Qualité irréprochable et dépassement des attentes' },
-      { icon: 'fas fa-clock', title: 'Réactivité', description: 'Support rapide et disponibilité 24/7' }
+      'Founded with a vision to bridge the gap between complex technology and business success, Tettrix has grown into a trusted partner for organizations seeking reliable IT solutions.',
+      'Our team of certified professionals combines deep technical expertise with a customer-first approach, ensuring every project delivers measurable value and exceeds expectations.'
     ],
     stats: [
-      { id: 'clients', value: '750+', label: 'Clients Satisfaits' },
-      { id: 'projects', value: '1800+', label: 'Projets Réalisés' },
-      { id: 'experience', value: '9+', label: 'Années d\'Expertise' },
-      { id: 'satisfaction', value: '98%', label: 'Taux de Satisfaction' }
+      { id: 'clients', value: '500+', label: 'Clients Served' },
+      { id: 'projects', value: '1200+', label: 'Projects Completed' },
+      { id: 'experience', value: '8+', label: 'Years Experience' }
     ]
   },
   services: {
